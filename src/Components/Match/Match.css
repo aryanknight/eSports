@@ -68,10 +68,14 @@
 
 .match-cont-1{
     margin-top: 40px;
+}
+
+.match-cont-2{
     padding: 1rem;
     display: flex;
     justify-content: center;
-    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
 }
 
 .match-box-1{
@@ -121,6 +125,37 @@
     width: 30%;
     padding: 1rem;
     border-radius: 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.match-box-2:hover{
+    background-color: #e00000;
+    cursor: pointer;
+}
+
+.match-time{
+    width: 100%;
+    font-size: 40px;
+    font-family: 'Rajdhani';
+    font-weight: bold;
+    text-align: center;
+}
+
+.match-date{
+    width: 100%;
+    font-size: 24px;
+    font-family: 'Rajdhani';
+    font-weight: bold;
+    text-align: center;
+}
+
+.match-icons{
+    text-align: center;
+    width: 100%;
 }
 
 @media (max-width:1000px){
