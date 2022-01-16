@@ -19,22 +19,30 @@ export default function Welcome() {
 
                         <div className="welcome-cont-1">
                             <div className="welcome-box-cont">
-                                <img src={Icon1} alt="" className="welcome-box-img" />
+                                <div className="welcome-img-cont">
+                                    <img src={Icon1} alt="" className="welcome-box-img" />
+                                </div>
                                 <div className="welcome-box-head">Live Streaming</div>
                                 <div className="welcome-box-para">Praesent a ornare metus. Etiam luctus arcu a neque venenatis, quis hendrerit mi maximus.</div>
                             </div>
                             <div className="welcome-box-cont">
-                                <img src={Icon1} alt="" className="welcome-box-img" />
+                                <div className="welcome-img-cont">
+                                    <img src={Icon1} alt="" className="welcome-box-img" />
+                                </div>
                                 <div className="welcome-box-head">Great Tournaments</div>
                                 <div className="welcome-box-para">Praesent a ornare metus. Etiam luctus arcu a neque venenatis, quis hendrerit mi maximus.</div>
                             </div>
                             <div className="welcome-box-cont">
-                                <img src={Icon1} alt="" className="welcome-box-img" />
+                                <div className="welcome-img-cont">
+                                    <img src={Icon1} alt="" className="welcome-box-img" />
+                                </div>
                                 <div className="welcome-box-head">Daily scrims</div>
                                 <div className="welcome-box-para">Praesent a ornare metus. Etiam luctus arcu a neque venenatis, quis hendrerit mi maximus.</div>
                             </div>
                             <div className="welcome-box-cont">
-                                <img src={Icon1} alt="" className="welcome-box-img" />
+                                <div className="welcome-img-cont">
+                                    <img src={Icon1} alt="" className="welcome-box-img" />
+                                </div>
                                 <div className="welcome-box-head">giveaways</div>
                                 <div className="welcome-box-para">Praesent a ornare metus. Etiam luctus arcu a neque venenatis, quis hendrerit mi maximus.</div>
                             </div>

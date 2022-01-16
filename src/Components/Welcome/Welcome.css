@@ -9,7 +9,7 @@
     overflow-x: hidden;
     overflow-y:hidden ;
     perspective: 3000px;
-    z-index: -1;
+    z-index: 1;
 }
 
 .welcome-parallax{
@@ -75,6 +75,11 @@
     width: 25%;
     padding: 1rem;
 }
+
+.welcome-img-cont{
+    width: 100%;
+}
+
 .welcome-box-img{
 
 }
@@ -88,4 +93,44 @@
     font-size: 16px;
     color: #6c6c6c;
     padding: 1rem 0rem;
+}
+
+
+@media (max-width:1000px){
+    .welcome-head{
+        text-align: center;
+        font-size: 30px;
+    }
+    .welcome-bar-cont{
+        justify-content: center;
+        padding: 0rem 1rem;
+        display: flex;
+    }
+    .welcome-box-cont{
+        width: 100%;
+        padding: 1rem;
+    }
+    .welcome-img-cont{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .welcome-box-img{
+
+    }
+    .welcome-box-head{
+        color: white;
+        font-size: 26px;
+        font-family: 'Rajdhani';
+        text-align: center;
+        font-weight: bold;
+    }
+    .welcome-box-para{
+        font-size: 16px;
+        color: #c3c3c3;
+        padding: 1rem 0rem;
+        text-align: center;
+    }
 }
