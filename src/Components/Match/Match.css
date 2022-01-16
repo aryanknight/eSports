@@ -9,6 +9,7 @@
     overflow-y:hidden ;
     perspective: 3000px;
     z-index: 1;
+    padding-bottom: 2rem;
 }
 
 /* .match-parallax{
@@ -204,6 +205,7 @@
         width: 100%;
         border-top-left-radius: 0px;
         border-top-right-radius: 0px ;
+        background-color: #e00000;
     }
     
 
