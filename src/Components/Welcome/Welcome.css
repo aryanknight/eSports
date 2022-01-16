@@ -1,0 +1,91 @@
+.welcome-cont{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #1c1c1c;
+    background-repeat: no-repeat;
+    text-transform: uppercase;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y:hidden ;
+    perspective: 3000px;
+    z-index: -1;
+}
+
+.welcome-parallax{
+    width: 100%;
+    height: 100%;
+    top: -10%;
+    position: absolute;
+    background-image: url('../../Images/download.png');
+    transform: translateZ(-100px) scale(1.1);
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+.welcome{
+    width: 100%;
+    min-height: 80vh;
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    background-color: #1c1c1c00;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.welcome-head-cont{
+    width: 100%;
+    padding: 1rem;
+}
+
+.welcome-head{
+    font-size: 36px;
+    font-family: 'Rajdhani';
+    width: 100%;
+    font-weight: bold;
+    color: white;
+}
+
+.welcome-bar-cont{
+    /* margin-top: 20px; */
+    padding: 0rem 1rem;
+    display: flex;
+}
+
+.welcome-bar{
+    height: 20px;
+    width: 60px;
+    background-color: #E00000;
+    margin-right: 10px;
+    transform: skew(-20deg);
+}
+
+.welcome-cont-1{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.welcome-box-cont{
+    width: 25%;
+    padding: 1rem;
+}
+.welcome-box-img{
+
+}
+.welcome-box-head{
+    color: white;
+    font-size: 30px;
+    font-family: 'Rajdhani';
+    font-weight: bold;
+}
+.welcome-box-para{
+    font-size: 16px;
+    color: #6c6c6c;
+    padding: 1rem 0rem;
+}
