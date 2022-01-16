@@ -1,5 +1,6 @@
 import React from 'react';
 import Intro from '../Components/Intro/Intro';
+import Match from '../Components/Match/Match';
 import Navbar from '../Components/Navbar/Navbar';
 import TournamentLists from '../Components/TournamentLists/TournamentLists';
 import Welcome from '../Components/Welcome/Welcome';
@@ -15,6 +16,7 @@ export default function HomePage() {
           <Intro/>
           <Welcome/>
           <TournamentLists/>
+          <Match/>
         </div>
     </div>
     )
