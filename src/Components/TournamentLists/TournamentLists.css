@@ -194,6 +194,10 @@
 }
 
 @media (max-width:500px){
+    .tournament-lists-parallax{
+        background-position: right bottom;
+        background-size: cover;
+    }
 
     #tournament-lists-img-1{
         width: 75%;

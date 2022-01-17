@@ -1,0 +1,181 @@
+.team-cont{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #1C1121;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y:hidden ;
+    perspective: 3000px;
+    z-index: 1;
+    padding-bottom: 2rem;
+}
+
+.team-parallax{
+    width: 100%;
+    height: 100%;
+    top: -10%;
+    position: absolute;
+    background-image: url('../../Images/bg2.jpg');
+    transform: translateZ(-10px) scale(1.1);
+    background-attachment: fixed;
+    background-position: right bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+.team{
+    width: 100%;
+    min-height: 100vh;
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    background-color: #1c1c1c00;
+    
+}
+
+.team-head-cont{
+    margin-top: 40px;
+    width: 100%;
+}
+
+.team-head{
+    font-size: 36px;
+    font-family: 'Rajdhani';
+    width: 100%;
+    padding: 1rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.team-bar-cont{
+    /* margin-top: 20px; */
+    padding: 0rem 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.team-bar{
+    height: 20px;
+    width: 60px;
+    background-color: #E00000;
+    margin-right: 10px;
+    transform: skew(-20deg);
+}
+
+.team-cont-1{
+    margin-top: 40px;
+}
+
+.team-cont-2{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.team-box-1-cont{
+    width: 25%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+}
+
+.team-box-1{
+    background-color: #171A21;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.team-box-1-img-cont{
+    width:100% ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.team-box-1-img{
+    width:70% ;
+}
+
+.team-box-1-text-cont{
+    width:100% ;
+    padding: 1rem;
+    padding-bottom: 2rem;
+    color: white;
+    text-transform: uppercase;
+}
+
+.team-text-1{
+    font-size: 30px;
+    color:#e00000 ;
+    font-family: 'Rajdhani';
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    height: fit-content;
+}
+
+.team-text-2{
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+}
+
+@media (max-width:1000px){
+    
+    .team{
+        min-height: 60vh;
+    }
+
+}
+
+@media (max-width:750px){
+
+    .team{
+        min-height: 100vh;
+    }
+
+    .team-box-1-cont{
+        width: 100%;
+    }
+
+    .team-box-1{
+        width: 100%;
+    }
+    
+    .team-box-1-img-cont{
+        width:100% ;
+    }
+    
+    .team-box-1-img{
+        width:40% ;
+    }
+    
+    .team-box-1-text-cont{
+        width:100% ;
+    }
+    
+    .team-text-1{
+        text-align: center;
+    }
+    
+    .team-text-2{
+        width: 100%;
+        text-align: center;
+    }
+    .team-box-2{
+        width: 100%;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px ;
+        background-color: #e00000;
+    }
+    
+
+}
+
