@@ -14,7 +14,7 @@ export default function HomePage() {
     return (
     <div className="App">
         <div className="container-large">
-          {/* <Navbar/> */}
+          <Navbar/>
           <Intro/>
           <Welcome/>
           <TournamentLists/>
