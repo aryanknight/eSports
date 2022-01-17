@@ -171,8 +171,14 @@
 }
 
 @media (max-width:750px){
+
+    .match-cont-2{
+        padding: 1rem 2rem;
+    }
+
     .match-box-1{
         width: 100%;
+        margin-right: 0px;
         border-bottom-left-radius: 0px;
         border-bottom-right-radius: 0px ;
     }
@@ -195,12 +201,15 @@
     
     .match-text-1{
         text-align: center;
+
     }
     
     .match-text-2{
         width: 100%;
         text-align: center;
+        margin-top: 0px;
     }
+
     .match-box-2{
         width: 100%;
         border-top-left-radius: 0px;
@@ -208,6 +217,23 @@
         background-color: #e00000;
     }
     
+    .match-time{
+        font-size: 32px;
+    }
+    
+    .match-date{
+        width: 100%;
+        font-size: 20px;
+        font-family: 'Rajdhani';
+        font-weight: bold;
+        text-align: center;
+    }
+    
+    .match-icons{
+        text-align: center;
+        width: 100%;
+        padding: 0%;
+    }
 
 }
 
