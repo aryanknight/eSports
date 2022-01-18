@@ -12,7 +12,7 @@ export default function Match() {
             <div className="container-medium">
                 <div className="match">
                     <div className="match-head-cont">
-                        <div className="match-head">Matchs</div>
+                        <div className="match-head">Scrim</div>
                     </div>    
                         
                     <div className="match-bar-cont">

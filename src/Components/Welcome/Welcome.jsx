@@ -9,7 +9,7 @@ export default function Welcome() {
             <div className="container-medium">
                 <div className="welcome">
                     <div className="welcome-head-cont">
-                        <div className="welcome-head">The Best BGMI Arena On <br/><span style={{color:'#99273B'}}>The Planet!</span></div>
+                        <div className="welcome-head">The Best BGMI Arena On <br/><span style={{color:'#FF033E'}}>The Planet!</span></div>
                     </div>    
                         <div className="welcome-bar-cont">
                             <div className="welcome-bar"></div>
