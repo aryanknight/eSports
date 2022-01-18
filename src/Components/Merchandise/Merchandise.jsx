@@ -4,12 +4,14 @@ import Merch1 from '../../Images/merch1.png';
 import Merch2 from '../../Images/merch2.png';
 import Merch3 from '../../Images/merch3.png';
 import Merch4 from '../../Images/merch4.png';
+import Char1 from '../../Images/char1.png'
 import "./Merchandise.css";
 
 export default function Merchandise() {
     return (
         <div className="merch-cont">
             {/* <div className="merch-parallax"></div> */}
+            <img src={Char1} alt="" id="char1" />
             <div className="container-medium">
                 <div className="merch">
                     <div className="merch-head-cont">

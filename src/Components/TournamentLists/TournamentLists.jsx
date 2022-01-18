@@ -1,7 +1,7 @@
 import React from 'react';
-import Img from '../../Images/img.jpg';
 import Img1 from '../../Images/img1.png';
 import Arrow from '../../Images/arrow.png'
+import bg3 from '../../Images/bg3.jpg'
 import "./TournamentLists.css";
 
 export default function TournamentLists() {
@@ -11,7 +11,7 @@ export default function TournamentLists() {
             <div className="container-medium">
                 <div className="tournament-lists">
                     <div className="tournament-lists-left">
-                        <img src={Img} id="tournament-lists-img-1"/>
+                        <img src={bg3} id="tournament-lists-img-1"/>
                         <img src={Img1} id="tournament-lists-img-2"/>
                     </div>
                     <div className="tournament-lists-right">

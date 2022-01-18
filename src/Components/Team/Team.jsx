@@ -1,11 +1,7 @@
 import React from 'react';
-import Img from '../../Images/img.jpg';
-import Img1 from '../../Images/img1.png';
-import Arrow from '../../Images/arrow.png';
 import Pic from '../../Images/pic1.png';
 import Pic2 from '../../Images/pic2.png';
 import Pic3 from '../../Images/pic3.png';
-import YouTubeIcon from '@mui/icons-material/YouTube';
 import "./Team.css";
 
 export default function Team() {

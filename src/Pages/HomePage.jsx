@@ -3,6 +3,7 @@ import Intro from '../Components/Intro/Intro';
 import Match from '../Components/Match/Match';
 import Merchandise from '../Components/Merchandise/Merchandise';
 import Navbar from '../Components/Navbar/Navbar';
+import NavbarSmall from '../Components/Navbar/NavbarSmall';
 import Team from '../Components/Team/Team';
 import TournamentLists from '../Components/TournamentLists/TournamentLists';
 import Welcome from '../Components/Welcome/Welcome';
@@ -31,6 +32,7 @@ export default function HomePage() {
         <div className="container-large">
         <div id="circle"></div>
           <Navbar/>
+          <NavbarSmall/>
           <Intro/>
           <Welcome/>
           <TournamentLists/>

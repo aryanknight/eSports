@@ -12,6 +12,14 @@
     padding-bottom: 2rem;
 }
 
+#char1{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 20%;
+    opacity: 0.2;
+}
+
 .merch{
     width: 100%;
     min-height: 100vh;
@@ -19,7 +27,6 @@
     overflow-x: hidden;
     position: relative;
     background-color: #1c1c1c00;
-    
 }
 
 .merch-head-cont{
@@ -181,6 +188,10 @@
 
     .merch{
         min-height: 100vh;
+    }
+
+    #char1{
+        display: none;
     }
 
     .merch-box-1-cont{
