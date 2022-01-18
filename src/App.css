@@ -2,11 +2,33 @@ body{
   background-color: white;
   font-family: 'Poppins', sans-serif;
   scroll-behavior: auto !important;
-  cursor: url('./Images/cursor.png'),auto;
+  cursor: none;
 }
 
 .App {
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
+}
+
+#circle{
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  pointer-events: none;
+  border-radius: 50%;
+  border: 3px solid rgb(255, 153, 0);
+  z-index: 5000;
+  transform: translate(-50%,-50%);
+  transform-origin: 100% 100%;
+  backdrop-filter:blur(2px);
+}
+
+@media (max-width:1000px){
+  body{
+    cursor: unset;
+  }
+  #circle{
+    display: none;
+  }
 }
