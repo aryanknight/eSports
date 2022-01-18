@@ -15,7 +15,7 @@ export default function Team() {
             <div className="container-medium">
                 <div className="team">
                     <div className="team-head-cont">
-                        <div className="team-head">teams</div>
+                        <div className="team-head">team</div>
                     </div>    
                         
                     <div className="team-bar-cont">

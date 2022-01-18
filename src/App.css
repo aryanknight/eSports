@@ -2,6 +2,7 @@ body{
   background-color: white;
   font-family: 'Poppins', sans-serif;
   scroll-behavior: auto !important;
+  cursor: url('./Images/cursor.png'),auto;
 }
 
 .App {

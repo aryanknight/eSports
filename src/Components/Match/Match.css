@@ -135,7 +135,7 @@
 
 .match-box-2:hover{
     background-color: #e00000;
-    cursor: pointer;
+    cursor: url('../../Images/bgcursor.png'),auto;
 }
 
 .match-time{

@@ -89,6 +89,8 @@
     background-color: #171A21;
     width: 100%;
     border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .team-box-1-img-cont{
@@ -109,6 +111,10 @@
     padding-bottom: 2rem;
     color: white;
     text-transform: uppercase;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 .team-text-1{
@@ -118,12 +124,11 @@
     font-weight: bold;
     text-align: center;
     width: 100%;
-    height: fit-content;
 }
 
 .team-text-2{
     width: 100%;
-    margin-top: 10px;
+    
     text-align: center;
 }
 
