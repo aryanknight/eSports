@@ -1,0 +1,388 @@
+.login{
+    margin: 0px;
+    min-height: 100vh;
+    height: 100vh;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    position: relative;
+    overflow-y: hidden;
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-x: hidden;
+}
+
+#login-img{
+    position: absolute;
+    width: 20%;
+    bottom: 0%;
+    right: 0%;
+}
+
+.login-cont{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+}
+
+.login-left{
+    width: 45%;
+    min-height: 100vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+}
+
+.login-right{
+    width: 55%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('../../Images/loginbg1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.login-cont-1{
+    width: 70%;
+    height: 100%;
+    padding-top: 10%;
+    position: relative;
+    /* background-color: violet; */
+}
+
+.login-img{
+    width: 30%;
+    margin-bottom: 20px;
+}
+
+.login-input{
+    width: 100%;
+    outline: none;
+    padding: 0.8rem;
+    font-size: 18px;
+    border-radius: 10px;
+    color: black;
+    border: none;
+}
+
+.login-head{
+    font-size: 20px;
+    color: #ffffff;
+    width: 80%;
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.login-para{
+    width: 80%;
+    font-size: 14px;
+    color: #526484;
+    margin-bottom: 20px;
+}
+
+.login-subhead{
+    width: 80%;
+    font-size: 14px;
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login-subhead-2{
+    color: #FF033E;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.cred-cont{
+    width: 80%;
+    margin-bottom: 20px;
+}
+
+.login-btn{
+    background-color: #FF033E;
+    color: white;
+    width: 80%;
+    padding: 1rem 0rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    border-radius: 6px ;
+    cursor: pointer;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    /* box-shadow: 0 13px 27px 0 rgb(163 48 53 / 25%); */
+    transition: 0.5s;
+}
+
+.or{
+    color:#526484;
+    text-align: center;
+    width: 80%;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.or-option{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.option{
+    color:#ff8a73 ;
+    cursor: pointer;
+    margin-bottom: 40px;
+}
+
+.policies{
+    margin-top: 25%;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.policy{
+    font-size: 16px;
+    cursor: pointer;
+    color:#FF033E ;
+    font-weight: bold;
+}
+
+.login-copyright{
+    position: absolute;
+    bottom: 10px;
+    font-size: 14px;
+    color: #526484;
+    width: 80%;
+    text-align: center;
+}
+
+.crypto-img{
+    width: 60%;
+}
+
+
+
+.login-btn:hover{
+    transform: translateY(-10px);
+}
+
+#signup-btn{
+    width: 60%;
+}
+
+@media (max-width:850px){
+    .login-left{
+        width: 100%;
+    }
+    
+    .login-right{
+        display: none;
+    }
+
+    .login-cont-1{
+        width: 90%;
+        height: 100%;
+    }
+
+    .login-head{
+        width: 100%;
+    }
+    
+    .login-para{
+        width: 100%;
+    }
+    
+    .login-subhead{
+        width: 100%;
+    }
+
+    .cred-cont{
+        width: 100%;
+    }
+    
+    .login-btn{
+        width: 100%;
+    }
+
+    .or{
+        width: 100%;
+    }
+    
+    .or-option{
+        width: 100%;
+    }
+
+    .login-copyright{
+        display: none;
+    }
+
+    .policies{
+        width: 100%;
+        padding-bottom: 1rem;
+    }
+}
+
+
+/*-------------------------------------------------- signup---------------------------------------- */
+
+.signup{
+    margin: 0px;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    position: relative;
+}
+
+.signup-left{
+    width: 100%;
+    min-height: 100vh;
+    background-image: url('../../Images/loginbg1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.signup-cont-1{
+    width: 70%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 12.5px );
+    -webkit-backdrop-filter: blur( 12.5px );
+    border-radius: 10px;
+}
+
+.signup-form{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.signup-email{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.signup-cont-2{
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.signup-img-cont{
+    width:30vmin ;
+    padding: 1rem;
+}
+
+.signup-img{
+    width:100%;
+}
+
+.signup-head{
+    font-size: 20px;
+    color: #000000;
+    width: 80%;
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.signup-input{
+    width: 100%;
+    outline: none;
+    padding: 0.8rem;
+    font-size: 18px;
+    border-radius: 10px;
+    color: black;
+    border: 1px solid black;
+}
+
+.signup-subhead{
+    width: 80%;
+    font-size: 14px;
+    color: #000000;
+    padding: 0rem 1rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.signup-cred-cont{
+    width: 100%;
+    padding: 1rem;
+}
+
+.signup-btn-cont{
+    width: 80%;
+    padding:0rem 1rem;
+}
+
+.signup-para{
+    width: 80%;
+}
+
+@media (max-width:850px){
+    .signup-head{
+        width: 100%;
+    }
+    .signup-para{
+        width: 100%;
+    }
+    .signup-cont-1{
+        width: 100%;
+        border-radius: 0px;
+    }
+    .signup-img-cont{
+        width:50vmin ;
+        padding: 1rem;   
+    }
+    .signup-email{
+        width: 100%;
+    }   
+    .signup-cont-2{
+        width: 100%;
+    }   
+    .signup-btn-cont{
+        width: 100%;
+    }
+}
