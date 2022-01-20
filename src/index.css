@@ -12,8 +12,9 @@
   align-items: center;
   flex-wrap: wrap;
   position: relative;
-  background-color: burlywood;
   overflow-x: hidden;
+  overflow-y: hidden;
+  background-color: #1c1121;
 }
 
 .container-medium{

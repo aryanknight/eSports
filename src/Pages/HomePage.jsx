@@ -1,4 +1,5 @@
 import React from 'react';
+import { Footer } from '../Components/Footer/Footer';
 import Intro from '../Components/Intro/Intro';
 import Match from '../Components/Match/Match';
 import Merchandise from '../Components/Merchandise/Merchandise';
@@ -39,6 +40,7 @@ export default function HomePage() {
           <Match/>
           <Team/>
           <Merchandise/>
+          <Footer/>
         </div>
     </div>
     )

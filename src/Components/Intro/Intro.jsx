@@ -16,7 +16,7 @@ export default function Intro() {
                             A blockchain based auction platform that rewards you for being the lowest unique bidder. 
                         </div> */}
                         <div className="intro-button-cont">
-                            <Link to="/bidding">
+                            <Link to="/register">
                                 <button className="intro-button">
                                     Register Now
                                 </button>
