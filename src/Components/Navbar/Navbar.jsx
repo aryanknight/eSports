@@ -42,9 +42,11 @@ export default function Navbar() {
                         <div className="nav-item"><a href='#how'>merchandise</a></div>
                         
                         <div className="nav-item">
-                            <div className="nav-btn-cont">
-                                <Link to="/login">login</Link>
-                            </div>
+                            <Link to="/login"> 
+                                <div className="nav-btn-cont">
+                                    login
+                                </div>
+                            </Link>
                         </div>
 
                     </div>

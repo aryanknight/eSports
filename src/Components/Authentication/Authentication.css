@@ -132,6 +132,16 @@
     transition: 0.5s;
 }
 
+.login-btn:disabled{
+    background-color: #bb1038;
+    cursor: not-allowed;
+}
+
+.login-alert-cont{
+    width: 80%;
+    margin-bottom: 10px;
+}
+
 .or{
     color:#526484;
     text-align: center;
@@ -155,7 +165,7 @@
 }
 
 .policies{
-    margin-top: 25%;
+    margin-top: 20px;
     width: 80%;
     display: flex;
     justify-content: space-around;

@@ -5,10 +5,9 @@ import { Link, Navigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { login } from '../../Redux/apiCalls';
-import { reset } from '../../Redux/userRedux';
-import { useJwt } from "react-jwt";
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
+import { Alert } from '@mui/material';
+import { reset } from '../../Redux/userRedux';
 
 
 const Login = () => {
@@ -17,11 +16,11 @@ const Login = () => {
     const history=useNavigate()
 
     const currentUser = useSelector((state) => state.user.currentUser);
-    let token = currentUser?.accessToken;
-    const { decodedToken, isExpired } = useJwt(token);
-   
+    const isFetching = useSelector((state) => state.user.isFetching);
+    const error = useSelector((state) => state.user.error);
+    console.log(isFetching)
+
     const dispatch =useDispatch();
-    // const [formIsValid, setFormValid] = useState(false)
 
     const emailChangeHandler = (event) => {
         setEnteredEmail(event.target.value)
@@ -33,16 +32,24 @@ const Login = () => {
 
     const onFormSubmitHandler = async (e) => {
         e.preventDefault();
-        const res= await axios.post("http://localhost:5000/auth/login",{email:enteredEmail,password:enteredPassword});
-        login(dispatch,res.data);
-        history("/");
+        try {
+            const a= await login(dispatch,{email:enteredEmail,password:enteredPassword});
+            if(a!="error")
+                history("/");
+        } catch (error) {
+            console.log(error)
+        }
+        
     };
+    
+    React.useEffect(()=>{
+        dispatch(reset())
+    },[])
 
     if(currentUser){
         return <Navigate to="/"/>
     }
     
-
     return (
         <div className='login'>
             <div className="login-cont">
@@ -69,9 +76,15 @@ const Login = () => {
                                 <input className='login-input' onChange={passwordChangeHandler} required placeholder="Password" type="password"  />
                             </div>
 
-                            {true
+                            {!isFetching
                                 ? <button onClick={onFormSubmitHandler} className='login-btn'>Sign in</button>
-                                : <button name="submit" type="submit" className='login-btn' disabled>Sign in</button>
+                                : <button className='login-btn' disabled>Sign in</button>
+                            }
+
+                            {error &&
+                                <div className="login-alert-cont">
+                                    <Alert severity="error">Wrong email or password</Alert>
+                                </div>
                             }
 
                         </form>
@@ -81,12 +94,7 @@ const Login = () => {
                             </Link>
                         </div>
 
-                        {/* <div className="or">OR</div>
-
-                        <div className="or-option">
-                            <div className="option">Facebook</div>
-                            <div className="option">Google</div>
-                        </div> */}
+                       
 
                         <div className="policies">
                             <Link to="/terms">
@@ -95,9 +103,6 @@ const Login = () => {
                             <Link to="/privacy-policy">
                                 <div className="policy">Privacy Policy</div>
                             </Link>
-                            {/* <Link to="/terms">
-                                <div className="policy">Help</div>
-                            </Link> */}
 
 
                         </div>
@@ -114,14 +119,5 @@ const Login = () => {
         </div >
     )
 };
-
-// Login.propTypes = {
-//     login: PropTypes.func.isRequired,
-//     isAuthenticated: PropTypes.bool,
-// };
-
-// const mapStateToProps = (state) => ({
-//     isAuthenticated: state.auth.isAuthenticated,
-// });
 
 export default Login;

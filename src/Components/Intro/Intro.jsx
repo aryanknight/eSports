@@ -1,8 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import "./Intro.css";
 
 export default function Intro() {
+    
+    const currentUser=useSelector((state)=>state.user.currentUser);
+    
     return (
         <div className="intro-cont">
             <div className="container-medium">
@@ -16,11 +20,16 @@ export default function Intro() {
                             A blockchain based auction platform that rewards you for being the lowest unique bidder. 
                         </div> */}
                         <div className="intro-button-cont">
-                            <Link to="/register">
+                            {currentUser ? (<Link to="/scrim">
                                 <button className="intro-button">
-                                    Register Now
+                                    book slots
                                 </button>
-                            </Link>
+                            </Link>):
+                            (<Link to="/register">
+                            <button className="intro-button">
+                                Register Now
+                            </button>
+                        </Link>)}
                             {/* <button id="how-bid-btn">
                                 How Do I Bid
                             </button> */}

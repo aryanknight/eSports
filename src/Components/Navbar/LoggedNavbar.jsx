@@ -3,7 +3,8 @@ import Logo from '../../Images/text.png';
 import { Link , useNavigate } from 'react-router-dom';
 import { useDispatch , useSelector } from 'react-redux';
 import { reset } from '../../Redux/userRedux';
-import Avatar from '@mui/material/Avatar';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import "./Navbar.css";
 
 export default function LoggedNavbar() {
@@ -13,8 +14,19 @@ export default function LoggedNavbar() {
 
     const handleLogout = () => {
         dispatch(reset());
-        Navigate("/");
+        setAnchorEl(null);
+        window.location.reload();
     }
+
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl);
+    
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
     
     React.useEffect(()=>{
         window.addEventListener("scroll",function(){
@@ -45,15 +57,31 @@ export default function LoggedNavbar() {
                     </div>
                     <div className="navbar-menu">
                         <div className="nav-item"><a href='https://www.google.com'>About us</a></div>
-                        <div className="nav-item"><a href="#features">scrim</a></div>
+                        <div className="nav-item"><a href="/scrim">scrim</a></div>
                         <div className="nav-item"><a href="#roadmap">tournament</a></div>
                         <div className="nav-item"><a href='#how'>merchandise</a></div>
                         <div className="nav-item">
-                            <div className="nav-btn-cont" onClick={handleLogout}>
-                                <Link to="/login">My account</Link>
+                            <div className="nav-btn-cont"  onClick={handleClick}>
+                                My account
                             </div>
                         </div>
+
+                        
                     </div>
+                    <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                        style={{marginTop:'10px'}}
+                        MenuListProps={{
+                        'aria-labelledby': 'basic-button',
+                        }}
+                    >
+                        <MenuItem onClick={handleClose}>Profile</MenuItem>
+                        <MenuItem onClick={handleClose}>My account</MenuItem>
+                        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                    </Menu>
                 </div>
             </div>
         </div>    

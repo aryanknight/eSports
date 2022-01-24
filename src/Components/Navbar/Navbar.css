@@ -51,10 +51,6 @@
     /* cursor: url('../../Images/bgcursor.png'),auto; */
 }
 
-.nav-item:hover{
-    color: black;
-}
-
 .nav-btn-cont{
     background-color: #ff033e;
     text-transform: uppercase;
