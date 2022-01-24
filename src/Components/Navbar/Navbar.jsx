@@ -37,7 +37,7 @@ export default function Navbar() {
                     </div>
                     <div className="navbar-menu">
                         <div className="nav-item"><a href='https://www.google.com'>About us</a></div>
-                        <div className="nav-item"><a href="#features">scrim</a></div>
+                        <div className="nav-item"><a href="/scrim">scrim</a></div>
                         <div className="nav-item"><a href="#roadmap">tournament</a></div>
                         <div className="nav-item"><a href='#how'>merchandise</a></div>
                         
