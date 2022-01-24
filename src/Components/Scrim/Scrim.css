@@ -1,0 +1,203 @@
+.scrim-cont{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #1C1121;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y:hidden ;
+    perspective: 3000px;
+    z-index: 1;
+    background-image: url('../../Images/bg6.png');
+    background-attachment: fixed;
+    padding-bottom: 2rem;
+}
+
+.scrim{
+    width: 100%;
+    min-height: 100vh;
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    background-color: #1c1c1c00;
+    
+}
+
+.scrim-head-cont{
+    margin-top: 14vh;
+    width: 100%;
+}
+
+.scrim-head{
+    font-size: 36px;
+    font-family: 'Rajdhani';
+    width: 100%;
+    padding: 1rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.scrim-bar-cont{
+    /* margin-top: 20px; */
+    padding: 0rem 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.scrim-bar{
+    height: 20px;
+    width: 60px;
+    background-color: #E00000;
+    margin-right: 10px;
+    transform: skew(-20deg);
+}
+
+.scrim-cont-1{
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.scrim-cont-2{
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    width: 33%;
+    flex-wrap: wrap;
+}
+
+.scrim-box-1{
+    background-color: #171A21;
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.scrim-box-1-img-cont{
+    width:40% ;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scrim-box-1-img{
+    width:100% ;
+}
+
+.scrim-box-1-text-cont{
+    width:60% ;
+    padding: 1rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center     ;
+    flex-wrap: wrap;
+}
+
+.scrim-text-1{
+    font-size: 30px;
+    color:#e00000 ;
+    font-family: 'Rajdhani';
+    font-weight: bold;
+    width: 100%;
+    height: fit-content;
+}
+
+.scrim-time{
+    width: 100%;
+    font-size: 24px;
+    font-family: 'Rajdhani';
+    font-weight: bold;
+}
+
+.scrim-date{
+    width: 100%;
+    font-size: 24px;
+    font-family: 'Rajdhani';
+    font-weight: bold;
+}
+
+.scrim-btn-cont{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.scrim-btn{
+    background-color: #ff033e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+
+@media (max-width:1000px){
+    .scrim-head{
+        font-size: 30px;
+    }
+
+    .scrim-bar-cont{
+        padding: 0rem 1rem;
+    }
+
+    .scrim-cont-2{
+        width: 50%;
+    }
+
+}
+
+@media (max-width:750px){
+
+    .scrim-cont-1{
+        width: 100%;
+        justify-content: center;
+    }
+
+    .scrim-cont-2{
+        width: 100%;
+    }
+
+    .scrim-box-1{
+        margin-right: 0px;
+    }
+    
+    .scrim-box-1-img-cont{
+        width:100% ;
+        margin-bottom: 20px;
+    }
+    
+    .scrim-box-1-img{
+        width:40% ;
+    }
+    
+    .scrim-box-1-text-cont{
+        width:100% ;
+    }
+    
+    .scrim-text-1{
+        text-align: center;
+    }
+    
+    .scrim-time{
+        text-align: center;
+        font-size: 32px;
+    }
+    
+    .scrim-date{
+        font-size: 32px;
+        text-align: center;
+    }
+
+}
+

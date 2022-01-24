@@ -2,16 +2,11 @@ import React from 'react';
 import { Footer } from '../Components/Footer/Footer';
 import LoggedNavbar from '../Components/Navbar/LoggedNavbar';
 import { useSelector } from 'react-redux';
-import Intro from '../Components/Intro/Intro';
-import Match from '../Components/Match/Match';
-import Merchandise from '../Components/Merchandise/Merchandise';
 import Navbar from '../Components/Navbar/Navbar';
 import NavbarSmall from '../Components/Navbar/NavbarSmall';
-import Team from '../Components/Team/Team';
-import TournamentLists from '../Components/TournamentLists/TournamentLists';
-import Welcome from '../Components/Welcome/Welcome';
+import Scrim from '../Components/Scrim/Scrim';
 
-export default function HomePage() {
+export default function ScrimPage() {
 
   const currentUser=useSelector(state=>state.user.currentUser);
 
@@ -32,12 +27,7 @@ export default function HomePage() {
         <div id="circle"></div>
           {currentUser?<LoggedNavbar/>:<Navbar/>}
           <NavbarSmall/>
-          <Intro/>
-          <Welcome/>
-          <TournamentLists/>
-          <Match/>
-          <Team/>
-          <Merchandise/>
+          <Scrim/>
           <Footer/>
         </div>
     </div>

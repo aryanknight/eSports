@@ -1,7 +1,10 @@
 import React from 'react';
 import SignUp from '../Components/Authentication/SignUp';
+import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 
 export default function SignupPage() {
+  const currentUser = useSelector((state) => state.user.currentUser);
     React.useEffect(()=>{
       document.documentElement.scrollTop = 0;
       const a=document.getElementById("circle")
@@ -12,6 +15,10 @@ export default function SignupPage() {
       }
 
     },[])
+
+    if(currentUser){
+      return <Navigate to="/"/>
+    }
     return (
     <div className="App">
         <div className="container-large">

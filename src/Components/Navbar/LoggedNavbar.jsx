@@ -6,7 +6,15 @@ import { reset } from '../../Redux/userRedux';
 import Avatar from '@mui/material/Avatar';
 import "./Navbar.css";
 
-export default function Navbar() {
+export default function LoggedNavbar() {
+    
+    const dispatch=useDispatch();
+    const Navigate=useNavigate();
+
+    const handleLogout = () => {
+        dispatch(reset());
+        Navigate("/");
+    }
     
     React.useEffect(()=>{
         window.addEventListener("scroll",function(){
@@ -40,13 +48,11 @@ export default function Navbar() {
                         <div className="nav-item"><a href="#features">scrim</a></div>
                         <div className="nav-item"><a href="#roadmap">tournament</a></div>
                         <div className="nav-item"><a href='#how'>merchandise</a></div>
-                        
                         <div className="nav-item">
-                            <div className="nav-btn-cont">
-                                <Link to="/login">login</Link>
+                            <div className="nav-btn-cont" onClick={handleLogout}>
+                                <Link to="/login">My account</Link>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

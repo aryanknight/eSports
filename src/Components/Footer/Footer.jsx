@@ -14,7 +14,7 @@ export function Footer() {
                         There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.
                         </div>
                         <div className="copyright-cont" style={{color:'black',fontWeight:'bold',marginTop:'40px'}}>
-                        Copyright @ 2021 SOWLOW. All rights reserved
+                        Copyright @ 2021 Clover Esports. All rights reserved
                         </div>
                     </div>
                     <div className="footer-right">

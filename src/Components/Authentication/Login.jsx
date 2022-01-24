@@ -1,47 +1,47 @@
 import React, { useState, useEffect } from 'react';
-import TextField from '@mui/material/TextField';
 import './Authentication.css';
 import Logo from '../../Images/text.png';
-// import { Checkbox, FormControlLabel } from '@mui/material';
 import { Link, Navigate } from 'react-router-dom';
-import PropTypes from 'prop-types'
-// import { connect } from 'react-redux'
-// import { login } from "../../actions/auth";
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { login } from '../../Redux/apiCalls';
+import { reset } from '../../Redux/userRedux';
+import { useJwt } from "react-jwt";
+import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 
-const Login = ({ login, isAuthenticated }) => {
-    // const [enteredEmail, setEnteredEmail] = useState("");
-    // const [enteredPassword, setEnteredPassword] = useState("");
+const Login = () => {
+    const [enteredEmail, setEnteredEmail] = useState("");
+    const [enteredPassword, setEnteredPassword] = useState("");
+    const history=useNavigate()
+
+    const currentUser = useSelector((state) => state.user.currentUser);
+    let token = currentUser?.accessToken;
+    const { decodedToken, isExpired } = useJwt(token);
+   
+    const dispatch =useDispatch();
     // const [formIsValid, setFormValid] = useState(false)
 
-    // const emailChangeHandler = (event) => {
-    //     setEnteredEmail(event.target.value)
-    // }
-    // const passwordChangeHandler = (event) => {
-    //     setEnteredPassword(event.target.value)
-    // }
-    // useEffect(() => {
-    //     //Adding Debounce
-    //     const identifier = setTimeout(() => {
-    //         setFormValid(
-    //             enteredEmail.includes('@') && enteredPassword.length > 0 && enteredEmail.trim().length > 0
-    //         )
-    //     }, 500)
+    const emailChangeHandler = (event) => {
+        setEnteredEmail(event.target.value)
+    }
 
-    //     return () => {
-    //         clearTimeout(identifier)
-    //     }
-    // }, [enteredEmail, enteredPassword])
+    const passwordChangeHandler = (event) => {
+        setEnteredPassword(event.target.value)
+    }
 
-    // const onFormSubmitHandler = async (e) => {
-    //     e.preventDefault();
-    //     login(enteredEmail, enteredPassword);
-    // };
+    const onFormSubmitHandler = async (e) => {
+        e.preventDefault();
+        const res= await axios.post("http://localhost:5000/auth/login",{email:enteredEmail,password:enteredPassword});
+        login(dispatch,res.data);
+        history("/");
+    };
 
-    //Redirect if logged in
-    // if (isAuthenticated) {
-    //     return <Navigate to="/bidding" />;
-    // }
+    if(currentUser){
+        return <Navigate to="/"/>
+    }
+    
 
     return (
         <div className='login'>
@@ -53,11 +53,11 @@ const Login = ({ login, isAuthenticated }) => {
                         </Link>
                         <form action method="post">
                             <div className="login-head">Sign-In</div>
-                            <div className="login-para">Access the Clover Account using your email and passcode.</div>
+                            <div className="login-para" onClick={e=>{console.log(currentUser)}}>Access the Clover Account using your email and passcode.</div>
 
                             <div className="login-subhead">Email or Username</div>
                             <div className="cred-cont">
-                                <input className='login-input' required placeholder="youremail@gmail.com" />
+                                <input className='login-input' onChange={emailChangeHandler} required placeholder="youremail@gmail.com" />
                             </div>
                             <div className="login-subhead">
                                 <div className="login-subhead-1">Password</div>
@@ -66,11 +66,11 @@ const Login = ({ login, isAuthenticated }) => {
                                 </Link>
                             </div>
                             <div className="cred-cont">
-                                <input className='login-input' required placeholder="Password" type="password"  />
+                                <input className='login-input' onChange={passwordChangeHandler} required placeholder="Password" type="password"  />
                             </div>
 
                             {true
-                                ? <button name="submit" type="submit" className='login-btn'>Sign in</button>
+                                ? <button onClick={onFormSubmitHandler} className='login-btn'>Sign in</button>
                                 : <button name="submit" type="submit" className='login-btn' disabled>Sign in</button>
                             }
 
