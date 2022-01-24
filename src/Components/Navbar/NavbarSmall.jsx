@@ -47,7 +47,7 @@ export default function NavbarSmall() {
                 </div>
                 <div className="sm-navbar-menu" id="bn">
                         <div className="sm-nav-item"><a href='#overview'>About us</a></div>
-                        <div className="sm-nav-item"><a href='#how'>scrim</a></div>
+                        <div className="sm-nav-item"><a href='/scrim'>scrim</a></div>
                         <div className="sm-nav-item"><a href="#features">tournament</a></div>
                         <div className="sm-nav-item"><a href="#roadmap">merchandise</a></div>
                         {/* <div className="sm-nav-item"><a href="#tokenomics">Tokenomics</a></div> */}
