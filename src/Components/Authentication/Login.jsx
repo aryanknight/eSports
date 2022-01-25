@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { login } from '../../Redux/apiCalls';
 import { useNavigate } from "react-router-dom";
 import { Alert } from '@mui/material';
-import { reset } from '../../Redux/userRedux';
+import { reset, setFetching } from '../../Redux/userRedux';
 
 
 const Login = () => {
@@ -16,9 +16,8 @@ const Login = () => {
     const history=useNavigate()
 
     const currentUser = useSelector((state) => state.user.currentUser);
-    const isFetching = useSelector((state) => state.user.isFetching);
+    let isFetching = useSelector((state) => state.user.isFetching);
     const error = useSelector((state) => state.user.error);
-    console.log(isFetching)
 
     const dispatch =useDispatch();
 
@@ -43,7 +42,7 @@ const Login = () => {
     };
     
     React.useEffect(()=>{
-        dispatch(reset())
+        dispatch(setFetching());
     },[])
 
     if(currentUser){
