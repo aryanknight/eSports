@@ -5,9 +5,9 @@ import axios from 'axios';
 export const login = async (dispatch,userInfo) =>{
 
     dispatch(loginStart());
-    console.log(process.env.BASE_URL)
+    console.log(process.env.REACT_APP_BASE_URL)
     try {
-        const res= await axios.post(process.env.BASE_URL+"/auth/login",userInfo);
+        const res= await axios.post(process.env.REACT_APP_BASE_URL+"/auth/login",userInfo);
         dispatch(loginSuccess(res.data));
         return "success"
     } catch (error) {
