@@ -43,6 +43,7 @@ const Login = () => {
     
     React.useEffect(()=>{
         dispatch(setFetching());
+        console.log("api key ", process.env.REACT_APP_BASE_URL)
     },[])
 
     if(currentUser){
