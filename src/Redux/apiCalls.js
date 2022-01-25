@@ -5,6 +5,7 @@ import axios from 'axios';
 export const login = async (dispatch,userInfo) =>{
 
     dispatch(loginStart());
+    console.log(process.env.BASE_URL)
     try {
         const res= await axios.post(process.env.BASE_URL+"/auth/login",userInfo);
         dispatch(loginSuccess(res.data));
