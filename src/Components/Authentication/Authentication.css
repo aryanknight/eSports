@@ -271,27 +271,23 @@
 .signup-left{
     width: 100%;
     min-height: 100vh;
-    background-image: url('../../Images/loginbg1.png');
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    background-color: #171a21;
     position: relative;
 }
 
 .signup-cont-1{
-    width: 70%;
+    width: 100%;
     position: relative;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    background: rgba( 255, 255, 255, 0.25 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 12.5px );
-    -webkit-backdrop-filter: blur( 12.5px );
-    border-radius: 10px;
 }
+
 
 .signup-form{
     width: 100%;
@@ -327,10 +323,9 @@
 
 .signup-head{
     font-size: 20px;
-    color: #000000;
+    color: #ffffff;
     width: 80%;
     font-weight: bold;
-    margin-bottom: 8px;
     display: flex;
     align-items: center;
 }
@@ -341,14 +336,39 @@
     padding: 0.8rem;
     font-size: 18px;
     border-radius: 10px;
-    color: black;
+    color: rgb(197, 194, 194);
+    background-color: rgba(255, 255, 255, 0.103);
     border: 1px solid black;
 }
+
+.upload-logo-cont{
+    width: 80%;
+}
+input[type="file"] {
+    display: none;
+}
+
+.img-upload{
+    text-transform: capitalize;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: #FF033E;
+}
+
+.signup-err-cont{
+    width: 80%;
+    padding: 1rem;
+    padding-bottom: 0rem;
+}
+
 
 .signup-subhead{
     width: 80%;
     font-size: 14px;
-    color: #000000;
+    color: #ffffff;
     padding: 0rem 1rem;
     font-weight: bold;
     display: flex;
@@ -358,7 +378,7 @@
 
 .signup-cred-cont{
     width: 100%;
-    padding: 1rem;
+    padding: 0.5rem 1rem;
 }
 
 .signup-btn-cont{
@@ -368,6 +388,7 @@
 
 .signup-para{
     width: 80%;
+    color: #949496;
 }
 
 @media (max-width:850px){

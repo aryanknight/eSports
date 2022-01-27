@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { login } from '../../Redux/apiCalls';
 import { useNavigate } from "react-router-dom";
 import { Alert } from '@mui/material';
-import { reset, setFetching } from '../../Redux/userRedux';
+import { reset, setError } from '../../Redux/userRedux';
 
 
 const Login = () => {
@@ -32,8 +32,8 @@ const Login = () => {
     const onFormSubmitHandler = async (e) => {
         e.preventDefault();
         try {
-            const a= await login(dispatch,{email:enteredEmail,password:enteredPassword});
-            if(a!="error")
+            const res= await login(dispatch,{email:enteredEmail,password:enteredPassword});
+            if(res!="error")
                 history("/");
         } catch (error) {
             console.log(error)
@@ -42,8 +42,7 @@ const Login = () => {
     };
     
     React.useEffect(()=>{
-        dispatch(setFetching());
-        console.log("api key ", process.env.REACT_APP_BASE_URL)
+        dispatch(setError());
     },[])
 
     if(currentUser){

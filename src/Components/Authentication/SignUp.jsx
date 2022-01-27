@@ -1,90 +1,132 @@
 import React, { useState, useEffect } from 'react';
-import TextField from '@mui/material/TextField';
 import Logo from '../../Images/text.png';
 import './Authentication.css';
 import { Link } from 'react-router-dom';
-// import PropTypes from 'prop-types'
-// import { connect } from "react-redux";
-import { useNavigate, Navigate } from "react-router-dom";
-// import Web3 from "web3";
+import { useNavigate , Navigate} from "react-router-dom";
+import FileBase64 from 'react-file-base64';
+import { Alert } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { register } from '../../Redux/apiCalls';
+import { setError } from '../../Redux/userRedux';
 
 
-const SignupPage = ({ signup, isAuthenticated }) => {
-    // const [enteredEmail, setEnteredEmail] = useState("");
-    // const [enteredPassword, setEnteredPassword] = useState("");
-    // const [enteredName, setEnteredName] = useState("");
-    // const [enteredNumber, setEnteredNumber] = useState("");
-    // const [enteredEthAddress, setEnteredEthAddress] = useState("");
-    // const [enteredBTCAddress, setEnteredBtcAddress] = useState("");
-    // const [enteredConfirmPassword, setEnteredconfirmPassword] = useState("");
+const SignupPage = () => {
+    const [enteredEmail, setEnteredEmail] = useState("");
+    const [enteredPassword, setEnteredPassword] = useState("");
+    const [enteredTeamName, setTeamName] = useState("");
+    const [enteredCaptName, setCaptName] = useState("");
+    const [logoImg, setLogoImg] = useState("");
+    const [enteredConfirmPassword, setEnteredconfirmPassword] = useState("");
+    const [errMessage,setErrMessage]=useState({state:false,msg:null});
 
-    // const [checkETHaddress, setcheckETHaddress] = useState(false)
+    const navigate=useNavigate();
+    const dispatch=useDispatch();
+    const isFetching = useSelector((state) => state.user.isFetching);
+    const error = useSelector((state) => state.user.error);
+    const currentUser = useSelector((state) => state.user.currentUser);
 
-    // const emailChangeHandler = (event) => {
-    //     setEnteredEmail(event.target.value)
-    // }
-    // const passwordChangeHandler = (event) => {
-    //     setEnteredPassword(event.target.value)
-    // }
-    // const confirmpasswordChangeHandler = (event) => {
-    //     setEnteredconfirmPassword(event.target.value)
-    // }
-    // const nameChangeHandler = (event) => {
-    //     setEnteredName(event.target.value)
-    // }
-    // const numberChangeHandler = (event) => {
-    //     setEnteredNumber(event.target.value)
-    // }
-    // const ethaddressChangeHandler = (event) => {
-    //     setEnteredEthAddress(event.target.value)
-    //     setcheckETHaddress(Web3.utils.isAddress(event.target.value))
-    // }
-    // const btcaddressChangeHandler = (event) => {
-    //     setEnteredBtcAddress(event.target.value)
-    // }
+    const checkImg = (e)=> {
+        if(e.type.includes("image")){
+            setLogoImg(e.base64);
+        }else{
+            setErrMessage(
+                {
+                    state:true,
+                    msg:"Upload Only PNG/JPG"
+                });
+        }
+    }
 
-    // const [formIsValid, setFormValid] = useState(false)
-    // const [checkedMark, setCheckedMark] = useState(true)
+    const checkForm = () => {
 
+        if( enteredEmail.length>0    && 
+            enteredPassword.length>0 && 
+            enteredTeamName.length>0 && 
+            enteredCaptName.length>0 && 
+            enteredConfirmPassword.length>0
+            )
+        {
+            if(enteredEmail.includes('@')){
+                if(enteredPassword.length>5){
+                    if(enteredPassword==enteredConfirmPassword){
+                        if(logoImg.length>0){
+                            setErrMessage(
+                                {
+                                    state:false,
+                                    msg:null
+                                });
+                            return true;
+                        }else{
+                            setErrMessage(
+                                {
+                                    state:true,
+                                    msg:"Please Select a Logo"
+                                });
+                            return false;
+                        }
+                    }else{
+                        setErrMessage(
+                            {
+                                state:true,
+                                msg:"Passwords do not match"
+                            });
+                        return false;
+                    }
+                }else{
+                    setErrMessage(
+                        {
+                            state:true,
+                            msg:"Password is too short (Min Length : 6 Letters)"
+                        });
+                    return false;
+                }
+            }else{
+                setErrMessage(
+                    {
+                        state:true,
+                        msg:"Please enter a valid email"
+                    });
+                return false;
+            }
+        }else{
+            setErrMessage(
+            {
+                state:true,
+                msg:"Please fill all the fields"
+            });
+        return false;
+        }
+    }
 
+    const submitForm = async (e) =>{
+        e.preventDefault()
+        const state=checkForm();
+        if(state){
+            const userData={
+                teamName: enteredTeamName,
+                email: enteredEmail,
+                captName: enteredCaptName,
+                password: enteredPassword,
+                imageData: logoImg
+            }
+            try {
+                const res = await register(dispatch,userData);
+                if(res=='success'){
+                    navigate("/")
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    }
 
-    // const handleChangeCheckedMark = (event) => {
-    //     setCheckedMark(event.target.checked)
-    // }
+    React.useEffect(()=>{
+        dispatch(setError());
+    },[])
 
-    // useEffect(() => {
-    //     //Adding Debounce
-    //     const identifier = setTimeout(() => {
-    //         setFormValid(
-    //             enteredEmail.includes('@') &&
-    //             enteredEmail.trim().length > 0 &&
-    //             enteredNumber.length >= 10 &&
-    //             checkETHaddress &&
-    //             enteredPassword.length > 0 &&
-    //             enteredConfirmPassword === enteredPassword &&
-    //             checkedMark
-    //         )
-    //     }, 500)
-
-    //     return () => {
-    //         clearTimeout(identifier)
-    //     }
-    // }, [enteredEmail, enteredNumber, checkETHaddress, enteredPassword, enteredConfirmPassword, checkedMark])
-
-    // console.log(enteredEmail.includes('@'), enteredEmail.trim().length > 0, enteredNumber.length >= 10,
-    //     checkETHaddress, enteredPassword.length > 0, enteredConfirmPassword === enteredPassword, checkedMark)
-
-    // const history = useNavigate();
-
-    // const onFormSubmitHandler = async (e) => {
-    //     e.preventDefault();
-    //     await signup(enteredEmail, enteredPassword, enteredName, enteredBTCAddress, enteredEthAddress, enteredNumber);
-    //     history('/login')
-    // };
-
-    // if (isAuthenticated) {
-    //     return <Navigate to="/bidding" />;
-    // }
+    if(currentUser){
+      return <Navigate to="/"/>
+    }
 
     return (
         <div className='signup'>
@@ -107,21 +149,21 @@ const SignupPage = ({ signup, isAuthenticated }) => {
                             <div className="signup-email">
                                 <div className="signup-subhead">Email</div>
                                 <div className="signup-cred-cont">
-                                    <input className='signup-input' required />
+                                    <input className='signup-input' onChange={(e)=>setEnteredEmail(e.target.value) } required />
                                 </div>
                             </div>
 
                             <div className="signup-cont-2">
                                 <div className="signup-subhead">Team Name</div>
                                 <div className="signup-cred-cont">
-                                    <input className='signup-input' required />
+                                    <input className='signup-input' onChange={(e)=>setTeamName(e.target.value)} required />
                                 </div>
                             </div>
 
                             <div className="signup-cont-2">
                                 <div className="signup-subhead">Captain Name</div>
                                 <div className="signup-cred-cont">
-                                    <input className='signup-input' required />
+                                    <input className='signup-input' onChange={(e)=>setCaptName(e.target.value)} required />
                                 </div>
                             </div>
 
@@ -129,24 +171,38 @@ const SignupPage = ({ signup, isAuthenticated }) => {
                             <div className="signup-cont-2">
                                 <div className="signup-subhead">Password</div>
                                 <div className="signup-cred-cont">
-                                    <input className='signup-input' required />
+                                    <input className='signup-input' onChange={(e)=>setEnteredPassword(e.target.value) } required />
                                 </div>
                             </div>
 
                             <div className="signup-cont-2">
                                 <div className="signup-subhead">Confirm Password</div>
                                 <div className="signup-cred-cont">
-                                    <input className='signup-input' required  />
+                                    <input className='signup-input' onChange={(e)=>setEnteredconfirmPassword(e.target.value)} required  />
                                 </div>
                             </div>
-                            {/* {!(enteredConfirmPassword === enteredPassword) ? (<>
-                                <Alert severity="error">Password and Confirm Password are not matching!</Alert>
-                            </>) : (<></>)} */}
 
-                            {true
+                            <div className="signup-cont-2 upload-logo-cont">
+                                <div className="signup-subhead">Upload Logo</div>
+                                <div className="signup-cred-cont" style={{paddingTop:'2rem'}}>
+                                    <label className='img-upload'> Choose Image File
+                                        <FileBase64 required onDone={e=>checkImg(e)}  />
+                                    </label>
+                                </div>
+                            </div>
+
+                                {error ? (<div className="signup-cont-2 signup-err-cont">
+                                    <Alert severity="error" style={{width:'100%'}} >Error occured please try again</Alert>
+                                </div>) : (<></>)}
+                            
+                                {errMessage.state ? (<div className="signup-cont-2 signup-err-cont">
+                                    <Alert severity="error" style={{width:'100%'}} >{errMessage.msg}</Alert>
+                                </div>) : (<></>)}
+                            
+                            {!isFetching
                                 ? (<>
                                 <div className="signup-btn-cont">
-                                    <button name="submit" type="submit" style={{width:'100%'}}className='login-btn'>Register</button>
+                                    <button name="submit" type="submit" onClick={e=>submitForm(e)} style={{width:'100%'}}className='login-btn'>Register</button>
                                 </div>
                                     
                                 </>)
@@ -157,9 +213,9 @@ const SignupPage = ({ signup, isAuthenticated }) => {
 
                         </form>
 
-                        <div className="login-para" style={{padding:'0rem 1rem',color:'black',width:'80%'}}>Are you already Registered?
+                        <div className="login-para" style={{padding:'0rem 1rem',color:'white',width:'80%'}}>Are you already Registered?
                             <Link to="/login">
-                                <span style={{ color: 'yellow', fontWeight:'bold',cursor: 'pointer' }}> Login</span>
+                                <span style={{ color: '#ff033e', fontWeight:'bolder',cursor: 'pointer' }}> Login</span>
                             </Link>
                         </div>
 
@@ -169,17 +225,18 @@ const SignupPage = ({ signup, isAuthenticated }) => {
                             <div className="option">Facebook</div>
                             <div className="option">Google</div>
                         </div> */}
-                        <div className="policies" style={{ marginTop: '1rem', paddingBottom: '1rem' }}>
+                        
+                        {/* <div className="policies" style={{ marginTop: '1rem', paddingBottom: '1rem' }}>
                             <Link to="/terms">
                                 <div className="policy" style={{ color: 'yellow', fontWeight:'bold',cursor: 'pointer' }}>Terms&Condition</div>
                             </Link>
                             <Link to="/privacy-policy">
                                 <div className="policy" style={{ color: 'yellow', fontWeight:'bold',cursor: 'pointer' }}>Privacy Policy</div>
                             </Link>
-                            {/* <Link to="/terms">
+                            <Link to="/terms">
                                 <div className="policy">Help</div>
-                            </Link> */}
-                        </div>
+                            </Link>
+                        </div> */}
 
                         {/* <div className="login-copyright">
                             © 2021 SOWLOW. All Rights Reserved.

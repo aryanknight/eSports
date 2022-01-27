@@ -25,11 +25,11 @@ const userSlice = createSlice({
       state.error=false;
       console.log("resetting happeing")
     },
-    setFetching:(state)=>{
+    setError:(state)=>{
       state.error=false
     }
   },
 });
 
-export const { loginStart, loginSuccess, loginFailure ,reset ,setFetching } = userSlice.actions;
+export const { loginStart, loginSuccess, loginFailure ,reset ,setError } = userSlice.actions;
 export default userSlice.reducer;

@@ -16,9 +16,6 @@ export default function SignupPage() {
 
     },[])
 
-    if(currentUser){
-      return <Navigate to="/"/>
-    }
     return (
     <div className="App">
         <div className="container-large">
