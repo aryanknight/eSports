@@ -169,7 +169,7 @@ const UserPanel = () => {
             teamName:currentUser?.teamName,
             captName:currentUser?.captName,
             email:currentUser?.email,
-            logoImg:currentUser?.logoImg.imgLink
+            logoImg:currentUser?.logoImg?.imgLink
         });
         dispatch(setError());
     },[]);
