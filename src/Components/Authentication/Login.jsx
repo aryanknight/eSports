@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { login } from '../../Redux/apiCalls';
 import { useNavigate } from "react-router-dom";
-import { Alert } from '@mui/material';
+import { Alert, CircularProgress } from '@mui/material';
 import { reset, setError } from '../../Redux/userRedux';
 
 
@@ -77,7 +77,9 @@ const Login = () => {
 
                             {!isFetching
                                 ? <button onClick={onFormSubmitHandler} className='login-btn'>Sign in</button>
-                                : <button className='login-btn' disabled>Sign in</button>
+                                : <button className='login-btn' disabled>
+                                    <CircularProgress/>
+                                </button>
                             }
 
                             {error &&

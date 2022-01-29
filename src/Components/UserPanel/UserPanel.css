@@ -1,0 +1,158 @@
+.panel{
+    min-height: 100vh;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    position: relative;
+    overflow-y: hidden;
+    background-image: url("../../Images/bg7.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-x: hidden;
+}
+
+.panel-cont{
+    padding:1rem;
+    margin-top: 14vh;
+}
+
+.panel-cont-1{
+    background-color: #171A21;
+    display: flex;
+    width: 100%;
+    padding: 1rem;
+    border-bottom: 0.5px solid #52648498;
+}
+
+.panel-user-name{
+    font-size: 18px;
+    color: #ffffff;
+    text-transform:capitalize;
+}
+
+.panel-user-email{
+    font-size: 18px;
+    color:#8094ae;
+}
+
+.panel-cont-2{
+    padding: 1rem;
+    background-color: #171A21;
+}
+
+.panel-head{
+    font-size: 24px;
+    color: #ffffff;
+    font-weight: bold;
+    font-family: "Rajdhani";
+    text-transform: uppercase;
+}
+
+.panel-para{
+    color:#8094ae;
+}
+
+.panel-cont-3{
+    padding: 1rem;
+    border-bottom: 0.5px solid #52648498;
+    background-color: #171A21
+}
+
+.user-detail-cont{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.panel-input{
+    width: 100%;
+    outline: none;
+    padding: 0.8rem;
+    font-size: 18px;
+    border-radius: 10px;
+    color: rgb(197, 194, 194);
+    background-color: rgba(255, 255, 255, 0.103);
+    border: 1px solid black;
+}
+
+.panel-detail-head{
+    width: 30%;
+    color: #526484;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.panel-detail-val{
+    width: 70%;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.panel-btn-cont{
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.panel-btn-1{
+    background-color: #ff033e;
+    color: white;
+    padding: 1rem 0rem;
+    width: 48%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    border-radius: 6px ;
+    cursor: pointer;
+    box-shadow: 0 13px 27px 0 rgb(163 48 53 / 25%);
+    text-transform: uppercase;
+}
+
+.panel-btn-2{
+    color: #ffffff;
+    background-color: rgb(145, 145, 145);
+    padding: 1rem 0rem;
+    width: 48%;
+    display: flex;
+    text-transform: uppercase;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    border-radius: 6px ;
+    cursor: pointer;
+}
+
+@media(max-width:700px){
+    .panel-detail-head{
+        width: 100%;
+        color: #526484;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    
+    .panel-detail-val{
+        width: 100%;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    .panel-btn-1{
+        width: 100%;
+    }
+    
+    .panel-btn-2{
+        margin-top: 20px;
+       width: 100%;
+    }
+}

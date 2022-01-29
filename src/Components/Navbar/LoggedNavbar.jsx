@@ -62,7 +62,7 @@ export default function LoggedNavbar() {
                         <div className="nav-item"><a href='#how'>merchandise</a></div>
                         <div className="nav-item">
                             <div className="nav-btn-cont"  onClick={handleClick}>
-                                My account
+                                account
                             </div>
                         </div>
 
@@ -78,9 +78,9 @@ export default function LoggedNavbar() {
                         'aria-labelledby': 'basic-button',
                         }}
                     >
-                        <MenuItem onClick={handleClose}>Profile</MenuItem>
-                        <MenuItem onClick={handleClose}>My account</MenuItem>
-                        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                        {/* <MenuItem onClick={handleClose}>Profile</MenuItem> */}
+                        <Link to="/account" ><MenuItem style={{color:'black',fontSize:'18px',textTransform:"capitalize"}}onClick={handleClose}>My account</MenuItem></Link>
+                        <MenuItem onClick={handleLogout} style={{fontSize:'18px'}}>Logout</MenuItem>
                     </Menu>
                 </div>
             </div>

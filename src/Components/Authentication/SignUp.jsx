@@ -18,6 +18,8 @@ const SignupPage = () => {
     const [logoImg, setLogoImg] = useState("");
     const [enteredConfirmPassword, setEnteredconfirmPassword] = useState("");
     const [errMessage,setErrMessage]=useState({state:false,msg:null});
+    const [imgErr,setImgErr]=useState({state:false,msg:null});
+    const [imgName,setImgName]=useState(null);
 
     const navigate=useNavigate();
     const dispatch=useDispatch();
@@ -27,9 +29,23 @@ const SignupPage = () => {
 
     const checkImg = (e)=> {
         if(e.type.includes("image")){
-            setLogoImg(e.base64);
+            if(e.file.size<=1000000){
+                setLogoImg(e.base64);
+                setImgName(e.name.slice(0,20)+"...")
+                setImgErr(
+                    {
+                        state:false,
+                        msg:null
+                    });
+            }else{
+                setImgErr(
+                    {
+                        state:true,
+                        msg:"File size must be less than 1mb"
+                    });    
+            }
         }else{
-            setErrMessage(
+            setImgErr(
                 {
                     state:true,
                     msg:"Upload Only PNG/JPG"
@@ -104,7 +120,7 @@ const SignupPage = () => {
         if(state){
             const userData={
                 teamName: enteredTeamName,
-                email: enteredEmail,
+                email: enteredEmail.trim(),
                 captName: enteredCaptName,
                 password: enteredPassword,
                 imageData: logoImg
@@ -188,8 +204,15 @@ const SignupPage = () => {
                                     <label className='img-upload'> Choose Image File
                                         <FileBase64 required onDone={e=>checkImg(e)}  />
                                     </label>
+                                    <span style={{marginLeft:'10px',color:'white'}}>
+                                        {imgName}
+                                    </span>
                                 </div>
                             </div>
+
+                                {imgErr.state ? (<div className="signup-cont-2 signup-err-cont">
+                                    <Alert severity="error" style={{width:'100%'}} >{imgErr.msg}</Alert>
+                                </div>) : (<></>)}
 
                                 {error ? (<div className="signup-cont-2 signup-err-cont">
                                     <Alert severity="error" style={{width:'100%'}} >Error occured please try again</Alert>

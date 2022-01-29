@@ -9,6 +9,7 @@ import {useJwt} from 'react-jwt';
 import { reset } from "./Redux/userRedux";
 import React from "react";
 import ScrimPage from "./Pages/ScrimPage";
+import MyAccountPage from "./Pages/MyAccountPage";
 
 function App() {
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -20,7 +21,7 @@ function App() {
 
   React.useEffect(()=>{
     console.log(decodedToken,isExpired);
-    if (decodedToken && isExpired) {
+    if (decodedToken && isExpired || currentUser && !currentUser?.accessToken) {
       console.log(currentUser)
       dispatch(reset());
     }
@@ -32,6 +33,7 @@ function App() {
       <Route exact path="/login" element={<LoginPage/>} />
       <Route exact path="/register" element={<SignupPage/>} />
       <Route exact path="/scrim" element={<ScrimPage/>} />
+      <Route exact path="/account" element={<MyAccountPage/>} />
     </Routes>
   );
 }
