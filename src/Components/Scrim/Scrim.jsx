@@ -50,7 +50,7 @@ export default function Scrim() {
                                         Date
                                     </div>
                                     <div className="scrim-text-1 scrim-text-2">
-                                        {new Date(scrim.endTime.year,scrim.endTime.month,scrim.endTime.date).toString().slice(0,15)}
+                                        {new Date(scrim.endTime.year,scrim.endTime.month,scrim.endTime.date).toString().slice(3,15)}
                                     </div>
                                     <div className="scrim-text-1">
                                         Time
@@ -72,7 +72,7 @@ export default function Scrim() {
                                         open
                                     </div>):
                                     <div className="scrim-text-1 scrim-text-2" style={{color:'#FDDA0D'}}>
-                                        Booked
+                                       {scrim.status}
                                     </div>}
 
                                     {scrim.status=="open" ?
