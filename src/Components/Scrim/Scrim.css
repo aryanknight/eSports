@@ -95,32 +95,32 @@
     padding: 1rem;
     color: white;
     display: flex;
-    flex-direction: column;
-    justify-content: center     ;
+    align-items: center;
     flex-wrap: wrap;
 }
 
-.scrim-text-1{
+.scrim-title{
     font-size: 30px;
-    color:#e00000 ;
+    color:#ff033e ;
     font-family: 'Rajdhani';
     font-weight: bold;
     width: 100%;
     height: fit-content;
+    text-transform: uppercase;
+    text-align: center;
 }
 
-.scrim-time{
-    width: 100%;
-    font-size: 24px;
+.scrim-text-1{
+    width: 40%;
+    font-size: 18px;
     font-family: 'Rajdhani';
     font-weight: bold;
+    text-transform: uppercase;
 }
 
-.scrim-date{
-    width: 100%;
-    font-size: 24px;
-    font-family: 'Rajdhani';
-    font-weight: bold;
+.scrim-text-2{
+    width: 60%;
+    text-align: right;
 }
 
 .scrim-btn-cont{
@@ -185,18 +185,12 @@
         width:100% ;
     }
     
+    .scrim-title{
+        text-align: center;
+    }
+
     .scrim-text-1{
-        text-align: center;
-    }
-    
-    .scrim-time{
-        text-align: center;
-        font-size: 32px;
-    }
-    
-    .scrim-date{
-        font-size: 32px;
-        text-align: center;
+        font-size: 24px;
     }
 
 }

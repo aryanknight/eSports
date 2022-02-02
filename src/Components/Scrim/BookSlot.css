@@ -1,0 +1,261 @@
+.book-slot-cont{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #1C1121;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y:hidden ;
+    perspective: 3000px;
+    z-index: 1;
+    background-image: url('../../Images/bg6.png');
+    background-attachment: fixed;
+    padding-bottom: 2rem;
+}
+
+.book-slot{
+    width: 100%;
+    min-height: 100vh;
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    background-color: #1c1c1c00;
+    
+}
+
+.book-slot-head-cont{
+    margin-top: 14vh;
+    width: 100%;
+}
+
+.book-slot-head{
+    font-size: 36px;
+    font-family: 'Rajdhani';
+    width: 100%;
+    padding: 1rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.book-slot-bar-cont{
+    /* margin-top: 20px; */
+    padding: 0rem 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.book-slot-bar{
+    height: 20px;
+    width: 60px;
+    background-color: #E00000;
+    margin-right: 10px;
+    transform: skew(-20deg);
+}
+
+.book-slot-cont-1{
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+}
+
+.book-slot-cont-2{
+    background-color: #171A21;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.book-slot-box-1{
+    background-color: #171A21;
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.book-slot-box-1-img-cont{
+    width:100% ;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-slot-box-1-img{
+    width:50% ;
+}
+
+.book-slot-box-1-text-cont{
+    width:100% ;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    
+}
+
+.book-slot-box-1-text{
+    width: 60%;
+    font-family: "Rajdhani";
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+}
+
+.ab{
+    text-align: right;
+    width: 40%;
+}
+
+.book-slot-box-2{
+    width:60% ;
+    padding: 1rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    border-left: 1px solid white;
+}
+
+.book-slot-title{
+    font-family: 'Rajdhani';
+    text-transform: uppercase;
+    width: 100%;
+    padding: 0 1rem;
+    text-align: center;
+    font-size: 34px;
+    color: #ff033e;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.book-slot-box-2-text-cont{
+    width: 70%;
+    font-family: 'Rajdhani';
+    font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.book-slot-box-2-text-1{
+    text-transform: uppercase;
+    font-size: 28px;
+    width: 50%;
+}
+
+.book-slot-rules-cont{
+    width: 100%;
+    margin-top: 20px;
+    padding: 1rem;
+}
+
+.rules{
+    font-size: 20px;
+    font-family: 'Rajdhani';
+    margin-bottom: 10px;
+}
+
+
+.book-slot-btn-cont{
+    width: 100%;
+    padding: 1rem;
+}
+
+.book-slot-btn{
+    background-color: #ff033e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+
+@media (max-width:750px){
+
+    .book-slot-cont-1{
+        width: 100%;
+        justify-content: center;
+    }
+
+    .book-slot-cont-2{
+        width: 100%;
+    }
+
+    .book-slot-box-1{
+        width: 100%;
+        margin-right: 0px;
+    }
+
+    .book-slot-box-1-img-cont{
+        width:100% ;
+        margin-bottom: 20px;
+    }
+    
+    .book-slot-box-1-img{
+        width:40% ;
+    }
+    
+    .book-slot-box-1-text-cont{
+        width:100% ;
+    }
+
+    .book-slot-box-1-text{
+        width: 70%;
+        font-family: "Rajdhani";
+        font-size: 22px;
+        font-weight: bold;
+        color: white;
+        text-transform: uppercase;
+    }
+
+    
+    .book-slot-box-2{
+        width: 100%;
+        margin-right: 0px;
+        border-left: none;
+        border-top: 1px solid white;
+    }
+
+    .book-slot-title{
+        font-size: 28px;
+    }
+    
+    .book-slot-box-2-text-cont{
+        width: 100%;
+    }
+
+    .book-slot-box-2-text-1{
+        width: 60%;
+        font-size: 22px;
+    }
+
+    .ab{
+        width: 30%;
+    }
+
+    .bc{
+        width: 40%;
+    }
+
+    .book-slot-rules-cont{
+        padding: 0rem;
+    }
+}
+

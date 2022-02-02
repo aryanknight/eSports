@@ -1,11 +1,25 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import Pic from '../../Images/pic1.png';
-import Pic2 from '../../Images/pic2.png';
-import Pic3 from '../../Images/pic3.png';
-import YouTubeIcon from '@mui/icons-material/YouTube';
+import {Link} from "react-router-dom";
 import "./Scrim.css";
 
 export default function Scrim() {
+
+    const [scrimList,setScrimList]=useState([]);
+
+    const getScrimList = async ()=>{
+        try {
+            const res = await axios.get(process.env.REACT_APP_BASE_URL+"/scrim");
+            setScrimList(res.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(()=>{
+        getScrimList();
+    },[])
     return (
         <div className="scrim-cont">
             <div className="container-medium">
@@ -21,148 +35,63 @@ export default function Scrim() {
                     </div>
 
                     <div className="scrim-cont-1">
-                        <div className="scrim-cont-2">
+
+                        {scrimList.map((scrim)=>
+                        (<div className="scrim-cont-2">
                             <div className="scrim-box-1">
                                 <div className="scrim-box-1-img-cont">
                                     <img src={Pic} alt="" className="scrim-box-1-img" />
                                 </div>
                                 <div className="scrim-box-1-text-cont">
-                                    {/* <div className="scrim-text-1">
-                                        Assasin
-                                    </div> */}
-                                    <div className="scrim-date">
-                                        7 Jan 2022
+                                    <div className="scrim-title">
+                                        {scrim.scrimName}
                                     </div>
-                                    <div className="scrim-time">
-                                        3 PM
+                                    <div className="scrim-text-1">
+                                        Date
                                     </div>
-                                    <div className="scrim-btn-cont">
-                                        <div className="scrim-btn">Claim Slot</div>
+                                    <div className="scrim-text-1 scrim-text-2">
+                                        {new Date(scrim.endTime.year,scrim.endTime.month,scrim.endTime.date).toString().slice(0,15)}
                                     </div>
-                                </div>
-                            </div>
-                        </div>
+                                    <div className="scrim-text-1">
+                                        Time
+                                    </div>
+                                    <div className="scrim-text-1 scrim-text-2">
+                                        {scrim.endTime.hour}
+                                    </div>
+                                    <div className="scrim-text-1">
+                                        fees
+                                    </div>
+                                    <div className="scrim-text-1 scrim-text-2">
+                                        {scrim.registrationFee} rs
+                                    </div>
+                                    <div className="scrim-text-1">
+                                        booking
+                                    </div>
+                                    {scrim.status=="open" ?
+                                    (<div className="scrim-text-1 scrim-text-2" style={{color:'#50c878'}}>
+                                        open
+                                    </div>):
+                                    <div className="scrim-text-1 scrim-text-2" style={{color:'#FDDA0D'}}>
+                                        Booked
+                                    </div>}
 
-                        <div className="scrim-cont-2">
-                            <div className="scrim-box-1">
-                                <div className="scrim-box-1-img-cont">
-                                    <img src={Pic2} alt="" className="scrim-box-1-img" />
-                                </div>
-                                <div className="scrim-box-1-text-cont">
-                                    {/* <div className="scrim-text-1">
-                                        Assasin
-                                    </div> */}
-                                    <div className="scrim-date">
-                                        7 Jan 2022
-                                    </div>
-                                    <div className="scrim-time">
-                                        3 PM
-                                    </div>
+                                    {scrim.status=="open" ?
+                                    (<div className="scrim-btn-cont">
+                                        <Link to={"/scrim/"+scrim._id} >
+                                            <div className="scrim-btn">Claim Slot</div>
+                                        </Link>
+                                    </div>):
                                     <div className="scrim-btn-cont">
-                                        <div className="scrim-btn">Claim Slot</div>
-                                    </div>
+                                        <Link to={"/scrim/"+scrim._id} >
+                                            <div className="scrim-btn">view details</div>
+                                        </Link>
+                                    </div>}
+                                    
                                 </div>
                             </div>
-                        </div>
+                        </div>)
+                        )}
 
-                        <div className="scrim-cont-2">
-                            <div className="scrim-box-1">
-                                <div className="scrim-box-1-img-cont">
-                                    <img src={Pic3} alt="" className="scrim-box-1-img" />
-                                </div>
-                                <div className="scrim-box-1-text-cont">
-                                    {/* <div className="scrim-text-1">
-                                        Assasin
-                                    </div> */}
-                                    <div className="scrim-date">
-                                        7 Jan 2022
-                                    </div>
-                                    <div className="scrim-time">
-                                        3 PM
-                                    </div>
-                                    <div className="scrim-btn-cont">
-                                        <div className="scrim-btn">Claim Slot</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="scrim-cont-2">
-                            <div className="scrim-box-1">
-                                <div className="scrim-box-1-img-cont">
-                                    <img src={Pic2} alt="" className="scrim-box-1-img" />
-                                </div>
-                                <div className="scrim-box-1-text-cont">
-                                    {/* <div className="scrim-text-1">
-                                        Assasin
-                                    </div> */}
-                                    <div className="scrim-date">
-                                        7 Jan 2022
-                                    </div>
-                                    <div className="scrim-time">
-                                        3 PM
-                                    </div>
-                                    <div className="scrim-btn-cont">
-                                        <div className="scrim-btn">Claim Slot</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="scrim-cont-2">
-                            <div className="scrim-box-1">
-                                <div className="scrim-box-1-img-cont">
-                                    <img src={Pic} alt="" className="scrim-box-1-img" />
-                                </div>
-                                <div className="scrim-box-1-text-cont">
-                                    {/* <div className="scrim-text-1">
-                                        Assasin
-                                    </div> */}
-                                    <div className="scrim-date">
-                                        7 Jan 2022
-                                    </div>
-                                    <div className="scrim-time">
-                                        3 PM
-                                    </div>
-                                    <div className="scrim-btn-cont">
-                                        <div className="scrim-btn">Claim Slot</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="scrim-cont-2">
-                            <div className="scrim-box-1">
-                                <div className="scrim-box-1-img-cont">
-                                    <img src={Pic3} alt="" className="scrim-box-1-img" />
-                                </div>
-                                <div className="scrim-box-1-text-cont">
-                                    {/* <div className="scrim-text-1">
-                                        Assasin
-                                    </div> */}
-                                    <div className="scrim-date">
-                                        7 Jan 2022
-                                    </div>
-                                    <div className="scrim-time">
-                                        3 PM
-                                    </div>
-                                    <div className="scrim-btn-cont">
-                                        <div className="scrim-btn">Claim Slot</div>
-                                    </div>
-                                </div>
-                            </div>
-                            {/* <div className="scrim-box-2">
-                                <div className="scrim-time">
-                                    03:50
-                                </div>
-                                <div className="scrim-date">
-                                    1st April 2022
-                                </div>
-                                <div className="scrim-icons" >
-                                    <YouTubeIcon style={{fontSize:"60px"}}/>
-                                </div>
-                            </div> */}
-                        </div>
                     </div>
                 </div>
             </div>

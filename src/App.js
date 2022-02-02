@@ -10,6 +10,7 @@ import { reset } from "./Redux/userRedux";
 import React from "react";
 import ScrimPage from "./Pages/ScrimPage";
 import MyAccountPage from "./Pages/MyAccountPage";
+import BookSlotPage from "./Pages/BookSlotPage";
 
 function App() {
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -34,6 +35,7 @@ function App() {
       <Route exact path="/register" element={<SignupPage/>} />
       <Route exact path="/scrim" element={<ScrimPage/>} />
       <Route exact path="/account" element={<MyAccountPage/>} />
+      <Route exact path="/scrim/:scrimId" element={<BookSlotPage/>} />
     </Routes>
   );
 }
