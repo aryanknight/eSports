@@ -11,12 +11,14 @@ export default function BookSlot() {
     
     const {scrimId} =useParams();
     const currentUser = useSelector((state) => state.user.currentUser);
+    const [pageLoad,setPageLoad]=useState()
     const [scrimData,setScrimData]=useState({});
     const [scrimBtn,setScrimBtn]=useState();
     const [reqStatus,setReqStatus]=useState({state:false,severity:null,msg:null});
 
     const getScrimDetails= async () =>{
         const res = await axios.get(process.env.REACT_APP_BASE_URL+"/scrim/"+scrimId);
+        setPageLoad(false)
         setScrimData(res.data);
         
         const startTime = new Date();
@@ -174,14 +176,11 @@ export default function BookSlot() {
     }
 
     useEffect(()=>{
+        setPageLoad(true);
         getScrimDetails();
         //checkUserScrimStatus();
     },[])
 
-    useEffect(()=>{
-        console.log(selectedSlot);
-        //checkUserScrimStatus();
-    },[selectedSlot])
     return (
         <div className="book-slot-cont">
             <div className="container-medium">
@@ -201,7 +200,13 @@ export default function BookSlot() {
                         <div className="book-slot-cont-2">
 
                             <div className="book-slot-box-1">
-                                
+                                {
+                                    pageLoad ? (
+                                        <div style={{width:'100%',display:'flex',justifyContent:'center',padding:'1rem'}}>
+                                            <CircularProgress/>
+                                        </div>
+                                    ) : (<></>)
+                                }
                                 <div className="book-slot-box-1-img-cont">
                                     <img src={scrimData?.logoImg?.imgLink} alt="" className="book-slot-box-1-img" />
                                 </div>
@@ -252,38 +257,45 @@ export default function BookSlot() {
 
                                 <div className="book-slot-title">scrim Match details</div>
                                 
-                                <div className="book-slot-box-2-text-cont">
-                                    <div className="book-slot-box-2-text-1">
-                                       match Date
-                                    </div>
-                                    <div className="book-slot-box-2-text-1 ab bc" style={{color:'#50c878'}}>
-                                        {new Date(scrimData?.endTime?.year,scrimData?.endTime?.month,scrimData?.endTime?.date).toString().slice(0,15)}
-                                    </div>
-                                </div>
-                                <div className="book-slot-box-2-text-cont">
-                                    <div className="book-slot-box-2-text-1">
-                                        match time
-                                    </div>
-                                    <div className="book-slot-box-2-text-1 ab bc" style={{color:'#50c878'}}>
-                                        {scrimData?.endTime?.hour}
-                                    </div>
-                                </div>
-                                <div className="book-slot-box-2-text-cont">
-                                    <div className="book-slot-box-2-text-1">
-                                        prize pool
-                                    </div>
-                                    <div className="book-slot-box-2-text-1 ab bc" style={{color:'#50c878'}}>
-                                        {scrimData?.prizePool} rs
-                                    </div>
-                                </div>
-                                <div className="book-slot-box-2-text-cont">
-                                    <div className="book-slot-box-2-text-1">
-                                        registration fee
-                                    </div>
-                                    <div className="book-slot-box-2-text-1 ab bc" style={{color:'#50c878'}}>
-                                        {scrimData?.registrationFee} rs
-                                    </div>
-                                </div>
+                                {
+                                    pageLoad ? (<CircularProgress/>) : (
+                                    <>
+                                        <div className="book-slot-box-2-text-cont">
+                                            <div className="book-slot-box-2-text-1">
+                                            match Date
+                                            </div>
+                                            <div className="book-slot-box-2-text-1 ab bc" style={{color:'#50c878'}}>
+                                                {new Date(scrimData?.endTime?.year,scrimData?.endTime?.month,scrimData?.endTime?.date).toString().slice(0,15)}
+                                            </div>
+                                        </div>
+                                        <div className="book-slot-box-2-text-cont">
+                                            <div className="book-slot-box-2-text-1">
+                                                match time
+                                            </div>
+                                            <div className="book-slot-box-2-text-1 ab bc" style={{color:'#50c878'}}>
+                                                {scrimData?.endTime?.hour}
+                                            </div>
+                                        </div>
+                                        <div className="book-slot-box-2-text-cont">
+                                            <div className="book-slot-box-2-text-1">
+                                                prize pool
+                                            </div>
+                                            <div className="book-slot-box-2-text-1 ab bc" style={{color:'#50c878'}}>
+                                                {scrimData?.prizePool} rs
+                                            </div>
+                                        </div>
+                                        <div className="book-slot-box-2-text-cont">
+                                            <div className="book-slot-box-2-text-1">
+                                                registration fee
+                                            </div>
+                                            <div className="book-slot-box-2-text-1 ab bc" style={{color:'#50c878'}}>
+                                                {scrimData?.registrationFee} rs
+                                            </div>
+                                        </div>
+                                    </>
+                                    )
+                                }
+                                
             
                                 <div className="book-slot-title" style={{marginTop:'40px'}}>Match rules</div>
                                 
