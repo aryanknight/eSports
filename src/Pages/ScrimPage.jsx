@@ -1,5 +1,5 @@
 import React from 'react';
-import { Footer } from '../Components/Footer/Footer';
+import { Footer2 } from '../Components/Footer/Footer';
 import LoggedNavbar from '../Components/Navbar/LoggedNavbar';
 import { useSelector } from 'react-redux';
 import Navbar from '../Components/Navbar/Navbar';
@@ -28,7 +28,7 @@ export default function ScrimPage() {
           {currentUser?<LoggedNavbar/>:<Navbar/>}
           <NavbarSmall/>
           <Scrim/>
-          <Footer/>
+          <Footer2/>
         </div>
     </div>
     )

@@ -1,12 +1,14 @@
-import { Alert, CircularProgress } from '@mui/material';
+import { Alert, Avatar, CircularProgress } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import "./BookSlot.css";
 
-export default function BookSlot() {
 
+let selectedSlot;
+export default function BookSlot() {
+    
     const {scrimId} =useParams();
     const currentUser = useSelector((state) => state.user.currentUser);
     const [scrimData,setScrimData]=useState({});
@@ -55,47 +57,81 @@ export default function BookSlot() {
                 </div>
             );
         }
-        
+        deSelectSlotNo();
+    }
+
+    const selectSlotNo = (e) =>{
+        if(selectedSlot){
+            const slot = document.getElementById(selectedSlot);
+            slot.style.backgroundColor="#50c878"
+        }
+        const slot = document.getElementById(e.target.id);
+        slot.style.backgroundColor="#ff033e"
+        selectedSlot=e.target.id
+        console.log(selectedSlot);
+    }
+
+    const deSelectSlotNo = (e) =>{
+        const slots = document.getElementsByClassName("slot-no");
+        try {
+            if(slots){
+                for(let i=0;i<=slots.length;i++){
+                    let slot=document.getElementsByClassName("slot-no")[i];
+                    slot.style.backgroundColor="#50c878";
+                }
+            }   
+        } catch (error) {
+            console.log(error)
+        }
+        selectedSlot=null;
     }
 
     const bookSlot = async () => {
-        setScrimBtn(
-            <div className="book-slot-btn-cont">
-                <div className="book-slot-btn"><CircularProgress/></div>
-            </div>
-        );
-        try {
-            
-            const userScrimData={
-                id:scrimId,
-                userId:currentUser._id,
-                teamName:currentUser.teamName,
-                email:currentUser.email
-            }
-            const res = await axios.post(process.env.REACT_APP_BASE_URL+"/scrim/slot/book/"+currentUser._id,userScrimData,
-            {
-                headers:{ 'token' : currentUser.accessToken }
-            });
-            if(res.status==201){
-                setReqStatus({state:true,severity:"success",msg:"Successfully Booked The Slot"});
-                setScrimBtn(
-                    <div className="book-slot-btn-cont" onClick={cancelSlot}>
-                        <div className="book-slot-btn">Cancel Slot</div>
-                    </div>
-                );
-            }
-        } catch (error) {
-
-            console.log(error);
-            setReqStatus({state:true,severity:"error",msg:"Some Error Occured. Please try again."})
+        console.log(selectedSlot);
+        if(selectedSlot){
             setScrimBtn(
-                <div className="book-slot-btn-cont" onClick={bookSlot}>
-                    <div className="book-slot-btn" style={{backgroundColor:"#50c878"}}>bookSlot</div>
+                <div className="book-slot-btn-cont">
+                    <div className="book-slot-btn"><CircularProgress/></div>
                 </div>
             );
-
+            try {
+                
+                const userScrimData={
+                    id:scrimId,
+                    userId:currentUser._id,
+                    teamName:currentUser.teamName,
+                    email:currentUser.email,
+                    slotNo:selectedSlot,
+                    teamLogo:currentUser?.logoImg?.imgLink
+                }
+                const res = await axios.post(process.env.REACT_APP_BASE_URL+"/scrim/slot/book/"+currentUser._id,userScrimData,
+                {
+                    headers:{ 'token' : currentUser.accessToken }
+                });
+                if(res.status==201){
+                    setReqStatus({state:true,severity:"success",msg:"Successfully Booked The Slot"});
+                    setScrimBtn(
+                        <div className="book-slot-btn-cont" onClick={cancelSlot}>
+                            <div className="book-slot-btn">Cancel Slot</div>
+                        </div>
+                    );
+                }
+            } catch (error) {
+    
+                console.log(error);
+                setReqStatus({state:true,severity:"error",msg:"Some Error Occured. Please try again."})
+                setScrimBtn(
+                    <div className="book-slot-btn-cont" onClick={bookSlot}>
+                        <div className="book-slot-btn" style={{backgroundColor:"#50c878"}}>bookSlot</div>
+                    </div>
+                );
+    
+            }
+            getScrimDetails();    
+        }else{
+            alert("Please select a slot")
         }
-        getScrimDetails();
+        
     }
 
     const cancelSlot = async () => {
@@ -134,7 +170,6 @@ export default function BookSlot() {
             );
 
         }
-
         getScrimDetails();
     }
 
@@ -142,6 +177,11 @@ export default function BookSlot() {
         getScrimDetails();
         //checkUserScrimStatus();
     },[])
+
+    useEffect(()=>{
+        console.log(selectedSlot);
+        //checkUserScrimStatus();
+    },[selectedSlot])
     return (
         <div className="book-slot-cont">
             <div className="container-medium">
@@ -165,6 +205,7 @@ export default function BookSlot() {
                                 <div className="book-slot-box-1-img-cont">
                                     <img src={scrimData?.logoImg?.imgLink} alt="" className="book-slot-box-1-img" />
                                 </div>
+
                                 <div className="book-slot-box-1-text-cont">
                                    <div className="book-slot-box-1-text">Total Slots</div>
                                    <div className="book-slot-box-1-text ab">{scrimData?.totalSlots}</div>
@@ -174,6 +215,23 @@ export default function BookSlot() {
                                    <div className="book-slot-box-1-text ab" style={{color:'#50c878'}}>{scrimData?.status}</div>
                                    {/* <div className="book-slot-box-1-text"></div>
                                    <div className="book-slot-box-1-text"></div> */}
+                                </div>
+
+                                <div className="slot-booking-area">
+                                <div className="book-slot-title" onClick={e=>console.log(selectedSlot)}>Available Slots</div>
+                                {
+                                    currentUser && !scrimData?.playerList?.find((player)=>player.email==currentUser.email) ?
+                                    scrimData?.slotsToOccupy?.map(slot=>
+                                        slot!=1 && slot!=2 ? (
+                                        <div className="slot-no-cont">
+                                            <div className="slot-no" id={slot} onClick={selectSlotNo}>
+                                                {slot}
+                                            </div>
+                                        </div>
+                                    ):(<></>)) : (<></>)
+                                }
+                                    
+                                    
                                 </div>
 
                                 <div className="book-slot-btn-cont" style={{padding:'0rem 1rem'}}>
@@ -226,15 +284,7 @@ export default function BookSlot() {
                                         {scrimData?.registrationFee} rs
                                     </div>
                                 </div>
-                                <div className="book-slot-box-2-text-cont">
-                                    <div className="book-slot-box-2-text-1">
-                                        slot booking 
-                                    </div>
-                                    <div className="book-slot-box-2-text-1 ab" style={{color:'#50c878'}}>
-                                        open
-                                    </div>
-                                </div>
-
+            
                                 <div className="book-slot-title" style={{marginTop:'40px'}}>Match rules</div>
                                 
                                 <div className="book-slot-rules-cont">
@@ -243,6 +293,37 @@ export default function BookSlot() {
                                     <div className="rules">3. Ut enim ad minim veniam, quis nostrud exercitation</div>
                                     <div className="rules">4. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium</div>
                                     <div className="rules">5. Ut enim ad minim veniam, quis nostrud exercitation</div>
+                                </div>
+
+                                <div className="book-slot-title" style={{marginTop:'40px'}}>Team Lists</div>
+
+                                <div className="book-slot-table-cont">
+                                    <div className="book-slot-table-row">
+                                        <div className="book-slot-table-head">
+                                            Team Logo
+                                        </div>
+                                        <div className="book-slot-table-head">
+                                            Team Name
+                                        </div>
+                                        <div className="book-slot-table-head">
+                                            Slot Allocated
+                                        </div>
+                                    </div>
+
+                                    {scrimData?.playerList?.map((team)=>(
+                                        <div className="book-slot-table-row">
+                                            <div className="book-slot-table-col">
+                                                <Avatar src={team?.teamLogo}/>
+                                            </div>
+                                            <div className="book-slot-table-col">
+                                                {team?.teamName}
+                                            </div>
+                                            <div className="book-slot-table-col">
+                                                {team.slotNo}
+                                            </div>
+                                        </div>
+                                    ))}
+
                                 </div>
                                          
                             </div>

@@ -16,6 +16,22 @@
     border-top-right-radius: 50px;
 }
 
+.footer-2{
+    min-height:60vh;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-attachment: fixed;
+    background-image: url('../../Images/footer.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #fd000000;
+    justify-content: center;
+    color:#818992;
+}
+
 .footer-cont{
     display: flex;
     padding: 2rem;
